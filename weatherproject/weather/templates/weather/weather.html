@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Weather in {{ city }}</h1>
+        <form method="get" action=".">
+            <div class="form-group">
+                <input type="text" name="city" class="form-control" placeholder="Enter city name">
+            </div>
+            <button type="submit" class="btn btn-primary">Get Weather</button>
+        </form>
+        {% if weather %}
+        <div class="mt-5">
+            <h2>Temperature: {{ weather.main.temp }}°C</h2>
+            <h3>Weather: {{ weather.weather.0.description }}</h3>
+            <h4>Humidity: {{ weather.main.humidity }}%</h4>
+            <h4>Wind Speed: {{ weather.wind.speed }} m/s</h4>
+        </div>
+        {% else %}
+        <p class="text-center mt-5">No weather data available. Please try a different city.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
